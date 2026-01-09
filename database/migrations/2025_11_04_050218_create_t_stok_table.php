@@ -11,13 +11,18 @@ return new class extends Migration
         Schema::create('t_stok', function (Blueprint $table) {
             $table->id('stok_id');
             $table->unsignedBigInteger('barang_id')->index();
-            $table->integer('jumlah');
-            $table->enum('tipe', ['masuk', 'keluar']);
-            $table->date('tanggal');
+            $table->unsignedBigInteger('user_id')->index();      // Tambahan kolom user_id
+            $table->unsignedBigInteger('supplier_id')->index();  // Tambahan kolom supplier_id (sesuai error)
+            
+            $table->date('stok_tanggal');      // Ganti 'tanggal' jadi 'stok_tanggal'
+            $table->integer('stok_jumlah');    // Ganti 'jumlah' jadi 'stok_jumlah'
+            
             $table->timestamps();
 
-            // Relasi ke barang
+            // Mendefinisikan Foreign Key
             $table->foreign('barang_id')->references('barang_id')->on('m_barang')->onDelete('cascade');
+            $table->foreign('user_id')->references('user_id')->on('m_user')->onDelete('cascade');
+            $table->foreign('supplier_id')->references('supplier_id')->on('m_supplier')->onDelete('cascade');
         });
     }
 

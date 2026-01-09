@@ -14,6 +14,11 @@ return new class extends Migration
             $table->string('username', 20)->unique();
             $table->string('nama', 100);
             $table->string('password');
+            
+            // --- INI BARIS YANG KURANG TADI ---
+            $table->string('avatar')->nullable(); 
+            // ----------------------------------
+
             $table->timestamps();
 
             // Foreign key ke tabel m_level

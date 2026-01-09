@@ -2,8 +2,9 @@
 
 namespace Database\Seeders;
 
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\DB; // <-- Jangan lupa
 
 class KategoriSeeder extends Seeder
 {
@@ -13,13 +14,39 @@ class KategoriSeeder extends Seeder
     public function run(): void
     {
         $data = [
-            ['kategori_id' => 1, 'kategori_kode' => 'SNC', 'kategori_nama' => 'Snack'],
-            ['kategori_id' => 2, 'kategori_kode' => 'BHN', 'kategori_nama' => 'Bahan Dapur'],
-            ['kategori_id' => 3, 'kategori_kode' => 'KCS', 'kategori_nama' => 'Kecantikan'],
-            ['kategori_id' => 4, 'kategori_kode' => 'HDL', 'kategori_nama' => 'Peralatan Handphone'],
-            ['kategori_id' => 5, 'kategori_kode' => 'FAS', 'kategori_nama' => 'Fashion'],
+            // Sesuaikan dengan nama kolom di migrasi
+            // ↓↓↓ Kolom 'kategori_kode' ditambahkan ↓↓↓
+            [
+                'kategori_kode' => 'ELK',
+                'kategori_nama' => 'Elektronik',
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'kategori_kode' => 'PKN',
+                'kategori_nama' => 'Pakaian',
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'kategori_kode' => 'ALT',
+                'kategori_nama' => 'Alat Tulis',
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'kategori_kode' => 'MKN',
+                'kategori_nama' => 'Makanan',
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'kategori_kode' => 'MNM',
+                'kategori_nama' => 'Minuman',
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
         ];
-
         DB::table('m_kategori')->insert($data);
     }
 }

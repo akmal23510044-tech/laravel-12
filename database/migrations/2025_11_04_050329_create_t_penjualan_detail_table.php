@@ -12,12 +12,15 @@ return new class extends Migration
             $table->id('detail_id');
             $table->unsignedBigInteger('penjualan_id')->index();
             $table->unsignedBigInteger('barang_id')->index();
-            $table->integer('jumlah');
-            $table->decimal('harga_jual', 12, 2);
-            $table->decimal('subtotal', 15, 2);
+            
+            // --- KOLOM YANG DIMINTA SEEDER ---
+            $table->integer('harga');  // Harga satuan barang saat transaksi
+            $table->integer('jumlah'); // Jumlah barang yang dibeli
+            // ---------------------------------
+            
             $table->timestamps();
 
-            // Relasi ke penjualan dan barang
+            // Foreign Key ke tabel penjualan dan barang
             $table->foreign('penjualan_id')->references('penjualan_id')->on('t_penjualan')->onDelete('cascade');
             $table->foreign('barang_id')->references('barang_id')->on('m_barang')->onDelete('cascade');
         });

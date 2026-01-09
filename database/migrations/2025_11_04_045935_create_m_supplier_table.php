@@ -6,23 +6,21 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
         Schema::create('m_supplier', function (Blueprint $table) {
             $table->id('supplier_id');
-            $table->string('nama_supplier', 100);
-            $table->string('alamat', 255)->nullable();
-            $table->string('telepon', 20)->nullable();
+            
+            // --- PERBAIKAN KOLOM DISINI ---
+            $table->string('supplier_kode', 10)->unique(); // Menambahkan supplier_kode
+            $table->string('supplier_nama', 100);          // Mengganti nama_supplier jadi supplier_nama
+            $table->string('supplier_alamat', 255);        // Mengganti alamat jadi supplier_alamat
+            // ------------------------------
+            
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('m_supplier');

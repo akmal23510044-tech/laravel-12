@@ -12,11 +12,15 @@ return new class extends Migration
             $table->id('barang_id');
             $table->unsignedBigInteger('kategori_id')->index();
             $table->unsignedBigInteger('supplier_id')->index();
-            $table->string('kode_barang', 50)->unique();
-            $table->string('nama_barang', 100);
-            $table->integer('stok')->default(0);
-            $table->decimal('harga_beli', 12, 2);
-            $table->decimal('harga_jual', 12, 2);
+            
+            // --- PERBAIKAN NAMA KOLOM ---
+            $table->string('barang_kode', 10)->unique(); // Ubah dari kode_barang ke barang_kode
+            $table->string('barang_nama', 100);          // Ubah dari nama_barang ke barang_nama
+            // ----------------------------
+
+            $table->integer('harga_beli'); 
+            $table->integer('harga_jual');
+            
             $table->timestamps();
 
             // Relasi ke kategori dan supplier

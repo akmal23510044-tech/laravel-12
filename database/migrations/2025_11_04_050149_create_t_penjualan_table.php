@@ -11,8 +11,13 @@ return new class extends Migration
         Schema::create('t_penjualan', function (Blueprint $table) {
             $table->id('penjualan_id');
             $table->unsignedBigInteger('user_id')->index();
-            $table->date('tanggal_penjualan');
-            $table->decimal('total_harga', 15, 2);
+            
+            // --- KOLOM BARU SESUAI PERMINTAAN SEEDER ---
+            $table->string('pembeli', 50);
+            $table->string('penjualan_kode', 20)->unique();
+            $table->dateTime('penjualan_tanggal'); // Ganti tanggal_penjualan jadi penjualan_tanggal
+            // -------------------------------------------
+            
             $table->timestamps();
 
             // Relasi ke user
